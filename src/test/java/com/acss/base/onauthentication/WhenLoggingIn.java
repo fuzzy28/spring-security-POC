@@ -41,10 +41,11 @@ import com.acss.poc.controller.MainController;
  * @author gvargas.local
  *
  */
-@WebAppConfiguration()
+@WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
+//used a separate -servlet context since tiles is messing up.
 @ContextConfiguration(locations = {"classpath:META-INF/spring/spring-security.xml",
-								   "classpath:META-INF/spring/spring-securityPOC-servlet.xml"})
+								   "classpath:META-INF/test/spring-securityPOC-test-servlet.xml"})
 public class WhenLoggingIn{
 	
 	@Autowired
@@ -207,7 +208,6 @@ public class WhenLoggingIn{
 				.session(session)
 	            .contentType(MediaType.TEXT_HTML)
 	            .accept(MediaType.TEXT_HTML))
-	            //denied status code.
 	            .andExpect(status().isOk())
 	            .andExpect(redirectedUrl(null))
 	            .andExpect(forwardedUrl(commonPage));

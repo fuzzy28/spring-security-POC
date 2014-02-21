@@ -75,16 +75,20 @@ public class LoginLogoutController {
 		return "deniedpage";
 	}
 	
-	/*
-	 * Ignore this, this is incase we need to define a custom logout. currenlt using logout by spring-security.
-	@RequestMapping(value = "/logout/success", method = RequestMethod.GET)
- 	public String logoutSuccess() {
+	/**
+	 * Handles redirection to login page after logout.
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+ 	public String logoutSuccess(ModelMap model) {
 		logger.debug("Logging out. . .");
 		String message = "Logout Success!";
+		model.put("message", message);
 		System.out.println(message);
-		
-		return "redirect:/auth/login?message="+message;
-	}*/
+				
+		return "redirect:/auth/login";
+	}
 	
 	
 }

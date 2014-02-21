@@ -6,9 +6,10 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 	
 	<!-- This is where we configure Spring-Security  -->
-	<security:http use-expressions="true" access-denied-page="/auth/denied" >
+	 <security:http use-expressions="true" access-denied-page="/auth/denied" >
 	 
 	 <security:intercept-url pattern="/auth/login" access="permitAll"/>
+	 <security:intercept-url pattern="/auth/logout" access="permitAll"/>
 	 <security:intercept-url pattern="/main/admin" access="hasRole('ROLE_ADMIN')"/>
 	 <security:intercept-url pattern="/main/common" access="isAuthenticated()"/>
 	  
@@ -17,10 +18,9 @@
 	   authentication-failure-url="/auth/login?error=true"/>
 	 
 	 <security:logout
-	   logout-url="/auth/logout/success"
+	   logout-url="/logout"
 	   invalidate-session="true"
-	   logout-success-url="/auth/login?message=Logout+Success."
-	   />
+	   logout-success-url="/auth/logout"/>
 	 
 	</security:http>
 	 

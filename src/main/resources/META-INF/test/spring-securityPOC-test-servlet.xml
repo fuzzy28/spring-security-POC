@@ -12,6 +12,8 @@
 		http://www.springframework.org/schema/mvc 
 		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 	
+	<!--Separate Servlet context configuration for testings since tiles configuration is messing up with JUnit  -->
+	
 	<!-- Activates various annotations to be detected in bean classes -->
 	<context:annotation-config />
 	
@@ -23,29 +25,10 @@
 	Note that, with Spring 3.0, this tag works in Servlet MVC only!  -->
 	<mvc:annotation-driven />
 	
-	<!-- Declare a view resolver 
+	<!-- Declare a view resolver -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
 	   		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
-	-->
-	
-	<!-- Tiles Configuration -->
-	<bean id="viewResolver"
-	    class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-	    <property name="viewClass">
-	        <value>
-	            org.springframework.web.servlet.view.tiles3.TilesView
-	        </value>
-	    </property>
-	</bean>
-	<bean id="tilesConfigurer"
-		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-		<property name="definitions">
-			<list>
-				<value>/WEB-INF/tiles.xml</value>
-			</list>
-		</property>
-	</bean>
-	
+
 	<!-- Controls the caching of page  -->
 	<mvc:interceptors>
         <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
