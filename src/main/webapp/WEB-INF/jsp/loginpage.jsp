@@ -15,26 +15,23 @@
 <h1>
  
 Login</h1>
-<div id="login-error">
- ${error}
- </div>
 <div id="login-message">
  ${message}
  </div>
  
 <!-- let spring-security do his thing. -->
-<form action="../j_spring_security_check" method="post" >
+<form action="../login-check" method="post" >
 
 <p>
  
  
- <label for="j_username">Username</label>
- <input id="j_username" name="j_username" type="text" />
+ <label for="username">Username</label>
+ <input id="username" name="username" type="text" />
 </p><p>
  
  
- <label for="j_password">Password</label>
- <input id="j_password" name="j_password" type="password" />
+ <label for="password">Password</label>
+ <input id="password" name="password" type="password" />
 </p><input  type="submit" value="Login"/>        
   
 </form></body>

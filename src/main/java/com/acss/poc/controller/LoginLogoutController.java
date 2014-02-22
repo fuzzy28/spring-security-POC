@@ -9,6 +9,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Handles and retrieves the login or denied page depending on the URI template
@@ -25,40 +26,20 @@ public class LoginLogoutController {
 	 * @return the name of the JSP page
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String getLoginPage(
-			@RequestParam(value = "error", required = false) boolean error,
-			@RequestParam(value = "message", required = false) String message,
-			ModelMap model) {
-		logger.debug("Received request to show login page");
-		
-		/*
-		 * See below: <form-login login-page="/auth/login"
-		 * authentication-failure-url="/auth/login?error=true"
-		 * default-target-url="/main/common"/>
-		 */
-		if (error == true) {
-			// Assign an error message
-			model.put("error",
-					"You have entered an invalid username or password!");
-		} else {
-			model.put("error", "");
-		}
-		
-		//for message notification
-		if(message != null){
-			model.put("message", message);
-		}else {
-			model.put("message", "");
-		}
-		
+	public String getLoginPage(ModelMap model) {
+				
+		// This will resolve to /WEB-INF/jsp/loginpage.jsp
+		return getViewNameIfAuthenticated("loginpage");
+	}
+
+	private String getViewNameIfAuthenticated(String targetPage) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			//just stay on commonpage if user is logged in.
-		    return "commonpage";
+			//change view into common page.
+		    targetPage = "commonpage";
 		}
-		
-		// This will resolve to /WEB-INF/jsp/loginpage.jsp
-		return "loginpage";
+		logger.debug("Received request to show page: "+targetPage);
+		return targetPage;
 	}
 
 	/**
@@ -69,8 +50,6 @@ public class LoginLogoutController {
 	 */
 	@RequestMapping(value = "/denied", method = RequestMethod.GET)
 	public String getDeniedPage() {
-		logger.debug("Received request to show denied page");
-
 		// This will resolve to /WEB-INF/jsp/deniedpage.jsp
 		return "deniedpage";
 	}
@@ -82,12 +61,36 @@ public class LoginLogoutController {
 	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
  	public String logoutSuccess(ModelMap model) {
-		logger.debug("Logging out. . .");
 		String message = "Logout Success!";
 		model.put("message", message);
-		System.out.println(message);
 				
-		return "redirect:/auth/login";
+		return getViewNameIfAuthenticated("loginpage");
+	}
+	
+	/**
+	 * Handles redirection to login page after failed login
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/failed", method = RequestMethod.GET)
+ 	public String loginFailed(ModelMap model) {
+		String message = "You have entered an invalid username or password!";
+		model.put("message", message);
+		
+		return getViewNameIfAuthenticated("loginpage");
+	}
+	
+	/**
+	 * Handles redirection to login page after failed login
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/session-failed", method = RequestMethod.GET)
+ 	public String sessionFailed(ModelMap model) {
+		String message = "You're current session has been invalidated due to concurrent login.";
+		model.put("message", message);
+		
+		return getViewNameIfAuthenticated("loginpage");
 	}
 	
 	

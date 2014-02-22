@@ -1,45 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
-	
-	<!-- This is where we configure Spring-Security  -->
-	 <security:http use-expressions="true" access-denied-page="/auth/denied" >
-	 
-	 <security:intercept-url pattern="/auth/login" access="permitAll"/>
-	 <security:intercept-url pattern="/auth/logout" access="permitAll"/>
-	 <security:intercept-url pattern="/main/admin" access="hasRole('ROLE_ADMIN')"/>
-	 <security:intercept-url pattern="/main/common" access="isAuthenticated()"/>
-	  
-	 <security:form-login
-	   login-page="/auth/login"
-	   authentication-failure-url="/auth/login?error=true"/>
-	 
-	 <security:logout
-	   logout-url="/logout"
-	   invalidate-session="true"
-	   logout-success-url="/auth/logout"/>
-	 
+
+	<!-- This is where we configure Spring-Security -->
+	<security:http use-expressions="true" access-denied-page="/auth/denied">
+
+		<security:intercept-url pattern="/auth/login"
+			access="permitAll" />
+		<security:intercept-url pattern="/auth/logout"
+			access="permitAll" />
+		<security:intercept-url pattern="/main/admin"
+			access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/main/user"
+			access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/main/common"
+			access="isAuthenticated()" />
+
+
+		<!--Instead of sticking with the defaults, lets define something to hide 
+			spring-security impl. -->
+		<security:form-login login-page="/auth/login"
+			authentication-failure-url="/auth/failed" 
+			login-processing-url="/login-check"
+			username-parameter="username" 
+			password-parameter="password" />
+
+		<security:logout logout-url="/logout"
+			invalidate-session="true" 
+			logout-success-url="/auth/logout" />
+
+		<security:session-management
+			session-authentication-error-url="/auth/session-failed">
+			
+			<security:concurrency-control
+				max-sessions="1" expired-url="/auth/session-failed" />
+		
+		</security:session-management>
+
 	</security:http>
-	 
+
 	<!-- Declare an authentication-manager to use a custom userDetailsService -->
 	<security:authentication-manager>
-	        <security:authentication-provider user-service-ref="userDetailsService">
-	          <security:password-encoder ref="passwordEncoder"/>
-	        </security:authentication-provider>
+		<security:authentication-provider
+			user-service-ref="userDetailsService">
+			<security:password-encoder ref="passwordEncoder" />
+		</security:authentication-provider>
 	</security:authentication-manager>
-	 
-	<!-- Use a Md5 encoder since the user's passwords are stored as Md5 in the database -->
-	<bean class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" id="passwordEncoder"/>
-	
-	 <!-- An in-memory list of users. No need to access an external database layer.
-	See Spring Security 3.1 Reference 5.2.1 In-Memory Authentication -->
-	<!-- admin's password is admin, while user's password is user  -->
+
+	<!-- Use a Md5 encoder since the user's passwords are stored as Md5 in the 
+		database -->
+	<bean
+		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"
+		id="passwordEncoder" />
+
+	<!-- An in-memory list of users. No need to access an external database 
+		layer. See Spring Security 3.1 Reference 5.2.1 In-Memory Authentication -->
+	<!-- admin's password is admin, while user's password is user -->
 	<security:user-service id="userDetailsService">
-	   <security:user name="admin" password="21232f297a57a5a743894a0e4a801fc3" authorities="ROLE_USER, ROLE_ADMIN" />
-	   <security:user name="user" password="ee11cbb19052e40b07aac0ca060c23ee" authorities="ROLE_USER" />
-	 </security:user-service>
-   
+		<security:user name="admin" password="21232f297a57a5a743894a0e4a801fc3"
+			authorities="ROLE_USER, ROLE_ADMIN" />
+		<security:user name="user" password="ee11cbb19052e40b07aac0ca060c23ee"
+			authorities="ROLE_USER" />
+	</security:user-service>
+
 </beans>

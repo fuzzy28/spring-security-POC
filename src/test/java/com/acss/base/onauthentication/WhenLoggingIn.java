@@ -103,8 +103,12 @@ public class WhenLoggingIn{
 		String password="admin";
 		
 		//Act and Assert
-		 mockMvc.perform(post("/j_spring_security_check")
-				.param("j_username",username).param("j_password",password))
+		/* instead of the default j_spring_security_check
+		   I have defined a custom url to hide the spring security impl.
+		   used login-check instead
+		*/
+		 mockMvc.perform(post("/login-check")
+				.param("username",username).param("password",password))
 	            //redirected
 	            .andExpect(status().is(302))
 	            .andExpect(redirectedUrl("/"))
@@ -119,11 +123,11 @@ public class WhenLoggingIn{
 		String password="password";
 		
 		//Act and Assert
-		mockMvc.perform(post("/j_spring_security_check")
-				.param("j_username",username).param("j_password",password))
+		mockMvc.perform(post("/login-check")
+				.param("username",username).param("password",password))
 	            //redirected
 	            .andExpect(status().is(302))
-	            .andExpect(redirectedUrl("/auth/login?error=true"))
+	            .andExpect(redirectedUrl("/auth/failed"))
 	            .andExpect(forwardedUrl(null));
 	}
 	

@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Denied Page</title>
+<title>The User Page</title>
 </head>
 <body>
 <h1>
- 
-Access Denied!</h1><p>
- 
-You cannot see this. . .</p></body>
+User Page</h1><p>
+Only user have access to this page.</p><p>
+Curabitur quis libero elit, dapibus iaculis nisl. Nullam quis velit eget odio 
+adipiscing tristique non sed ligula. In auctor diam eget nisl condimentum laoreet..</p></body>
 </html>

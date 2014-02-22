@@ -41,4 +41,14 @@ public class MainController {
 		// This will resolve to /WEB-INF/jsp/adminpage.jsp
 		return "adminpage";
 	}
+	
+	/**
+	 * Handles and retrieves the user JSP page that user can see
+	 * 
+	 * @return the name of the JSP page
+	 */
+	@RequestMapping(value="/user", method = RequestMethod.GET)
+	public String getUserPage(){
+		return "userpage";
+	}
 }

@@ -32,6 +32,9 @@
 		
 		<!-- Spring Security -->
 		<springsecurity.version>3.2.0.RELEASE</springsecurity.version>
+		
+		<!-- Tiles version -->
+		<tiles.version>3.0.1</tiles.version>
 	</properties>
 	
 	<dependencies>
@@ -171,27 +174,32 @@
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-api</artifactId>
-			<version>3.0.1</version>
+			<version>${tiles.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-core</artifactId>
-			<version>3.0.1</version>
+			<version>${tiles.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-jsp</artifactId>
-			<version>3.0.1</version>
+			<version>${tiles.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-servlet</artifactId>
-			<version>3.0.1</version>
+			<version>${tiles.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tiles</groupId>
 			<artifactId>tiles-template</artifactId>
-			<version>3.0.1</version>
+			<version>${tiles.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging-api</artifactId>
+			<version>1.1</version>
 		</dependency>
 	</dependencies>	
   <build>

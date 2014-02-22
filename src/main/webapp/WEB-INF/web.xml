@@ -48,4 +48,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	<listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+    
+    <!-- For Concurrent User checking feature-->
+    <listener>
+    <listener-class>
+      org.springframework.security.web.session.HttpSessionEventPublisher
+    </listener-class>
+  	</listener>
+	<error-page>
+	  <error-code>404</error-code>
+	  <location>/WEB-INF/jsp/layout-404.jsp</location>
+	</error-page>
 </web-app>
