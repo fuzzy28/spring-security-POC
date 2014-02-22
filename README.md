@@ -26,4 +26,27 @@ Screenshots:
 
 > mvn tomcat:run
 
-![Alt text](https://github.com/ultragaylord/spring-security-POC/tree/new/tiles/screenshot/mvntomcatrun.jpg?raw=true)
+![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/tiles/screenshot/mvntomcatrun.png)
+
+---------------------------
+Login Page
+![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/tiles/screenshot/loginpage.png)
+
+---------------------------
+Common Page - Admin user is currently logged. Admin Menu and User Menu available.
+![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/tiles/screenshot/commonpage.png)
+
+---------------------------
+User Page - Admin Menu not accessible
+![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/tiles/screenshot/userpage.png)
+
+---------------------------
+Denied Page - Using user account and attempt to access secured page.
+![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/tiles/screenshot/denied.png)
+
+---------------------------
+404 Page - Replace Tomcat generic 404 page with custom page
+![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/tiles/screenshot/404.png)
+
+
+
