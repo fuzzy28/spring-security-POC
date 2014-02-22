@@ -19,3 +19,11 @@ Users:
 
 u:admin p:admin roles: ROLE_USER, ROLE_ADMIN 
 user:user roles: ROLE_USER
+
+---------------------------
+
+Screenshots:
+
+> mvn tomcat:run
+
+![Alt text](https://github.com/ultragaylord/spring-security-POC/tree/new/tiles/screenshot/mvntomcatrun.jpg?raw=true)
