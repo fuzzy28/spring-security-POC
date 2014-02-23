@@ -1,4 +1,4 @@
-package com.acss.poc.controller;
+package com.acss.poc.login;
 
 import org.apache.log4j.Logger;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -15,9 +15,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/auth")
 public class LoginLogoutController {
-
+	
 	protected static Logger logger = Logger.getLogger("controller");
-
+	
+	/**
+	 * View Definitions
+	 */
+	private static String HOME_PAGE="commonpage";
+	private static String DENIED_PAGE="deniedpage";
+	private static String LOGIN_PAGE="loginpage";
+	
 	/**
 	 * Handles and retrieves the login JSP page
 	 * 
@@ -25,16 +32,15 @@ public class LoginLogoutController {
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String getLoginPage(ModelMap model) {
-				
-		// This will resolve to /WEB-INF/jsp/loginpage.jsp
-		return getViewNameIfAuthenticated("loginpage");
+		
+		return getViewNameIfAuthenticated(LOGIN_PAGE);
 	}
 
 	private String getViewNameIfAuthenticated(String targetPage) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			//change view into common page.
-		    targetPage = "commonpage";
+			//change view into home page.
+		    targetPage = HOME_PAGE;
 		}
 		logger.debug("Received request to show page: "+targetPage);
 		return targetPage;
@@ -48,8 +54,7 @@ public class LoginLogoutController {
 	 */
 	@RequestMapping(value = "/denied", method = RequestMethod.GET)
 	public String getDeniedPage() {
-		// This will resolve to /WEB-INF/jsp/deniedpage.jsp
-		return "deniedpage";
+		return DENIED_PAGE;
 	}
 	
 	/**
@@ -62,7 +67,7 @@ public class LoginLogoutController {
 		String message = "Logout Success!";
 		model.put("message", message);
 				
-		return getViewNameIfAuthenticated("loginpage");
+		return getViewNameIfAuthenticated(LOGIN_PAGE);
 	}
 	
 	/**
@@ -75,7 +80,7 @@ public class LoginLogoutController {
 		String message = "You have entered an invalid username or password!";
 		model.put("message", message);
 		
-		return getViewNameIfAuthenticated("loginpage");
+		return getViewNameIfAuthenticated(LOGIN_PAGE);
 	}
 	
 	/**
@@ -88,7 +93,7 @@ public class LoginLogoutController {
 		String message = "You're current session has been invalidated due to concurrent login.";
 		model.put("message", message);
 		
-		return getViewNameIfAuthenticated("loginpage");
+		return getViewNameIfAuthenticated(LOGIN_PAGE);
 	}
 	
 	

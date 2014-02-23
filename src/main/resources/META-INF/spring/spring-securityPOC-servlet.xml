@@ -11,41 +11,19 @@
 		http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/mvc 
 		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
-	
+		
+	<import resource="business-config.xml"/>
 	<!-- Activates various annotations to be detected in bean classes -->
 	<context:annotation-config />
 	
 	<!-- Scans the classpath for annotated components that will be auto-registered as Spring beans.
 	 For example @Controller and @Service. Make sure to set the correct base-package-->
-	<context:component-scan base-package="com.acss.poc.controller" />
+	<context:component-scan base-package="com.acss.poc.*" />
 	
 	<!-- Configures the annotation-driven Spring MVC Controller programming model.
 	Note that, with Spring 3.0, this tag works in Servlet MVC only!  -->
 	<mvc:annotation-driven />
-	
-	<!-- Declare a view resolver 
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
-	   		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
-	-->
-	
-	<!-- Tiles Configuration -->
-	<bean id="viewResolver"
-	    class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-	    <property name="viewClass">
-	        <value>
-	            org.springframework.web.servlet.view.tiles3.TilesView
-	        </value>
-	    </property>
-	</bean>
-	<bean id="tilesConfigurer"
-		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-		<property name="definitions">
-			<list>
-				<value>/WEB-INF/tiles.xml</value>
-			</list>
-		</property>
-	</bean>
-	
+		
 	<!-- Controls the caching of page  -->
 	<mvc:interceptors>
         <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
@@ -55,4 +33,35 @@
                 <property name="useCacheControlNoStore" value="true"/>
         </bean>     
     </mvc:interceptors>
+	
+	<!-- Made a profile for viewResolver since test cannot proceed if on tiles 
+		 Just use the org.springframework.web.servlet.view.InternalResourceViewResolver
+		 for test profile
+	-->
+	<beans profile="jdbc">
+		<!-- Tiles Configuration -->
+		<bean id="viewResolver"
+		    class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		    <property name="viewClass">
+		        <value>
+		            org.springframework.web.servlet.view.tiles3.TilesView
+		        </value>
+		    </property>
+		</bean>
+		<bean id="tilesConfigurer"
+			class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+			<property name="definitions">
+				<list>
+					<value>WEB-INF/tiles.xml</value>
+				</list>
+			</property>
+		</bean>
+	</beans>
+	
+	<beans profile="test">
+		<!-- Declare a view resolver -->
+		<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" 
+		   		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
+	</beans>
+	
 </beans>

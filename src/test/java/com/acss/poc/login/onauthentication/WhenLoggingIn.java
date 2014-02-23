@@ -1,4 +1,4 @@
-package com.acss.base.onauthentication;
+package com.acss.poc.login.onauthentication;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -18,9 +18,10 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -28,8 +29,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.acss.poc.controller.LoginLogoutController;
-import com.acss.poc.controller.MainController;
+import com.acss.poc.login.LoginLogoutController;
+import com.acss.poc.main.MainController;
 
 
 /**
@@ -43,14 +44,12 @@ import com.acss.poc.controller.MainController;
  */
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
+@ActiveProfiles("test")
 //used a separate -servlet context since tiles is messing up.
 @ContextConfiguration(locations = {"classpath:META-INF/spring/spring-security.xml",
-								   "classpath:META-INF/test/spring-securityPOC-test-servlet.xml"})
+								   "classpath:META-INF/spring/spring-securityPOC-servlet.xml"})
 public class WhenLoggingIn{
-	
-	@Autowired
-	protected InMemoryUserDetailsManager userDetailsService;
-	
+		
 	@Autowired
 	WebApplicationContext ctx;
 	
@@ -62,6 +61,7 @@ public class WhenLoggingIn{
 	@Before
 	public void setUp(){
 		mockMvc = MockMvcBuilders.webAppContextSetup(ctx).addFilter(springSecurityFilterChain,"/*").alwaysDo(print()).build();
+		encodePassword();
 	}
 	
 	@Test
@@ -79,6 +79,7 @@ public class WhenLoggingIn{
 	            //redirected On.
 	            .andExpect(redirectedUrl(expectedURL))
 	            .andExpect(forwardedUrl(null));
+		
 	}
 		
 	@Test
@@ -228,7 +229,17 @@ public class WhenLoggingIn{
         session.setAttribute(
                 HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
                 securityContext);
+        
 		return session;
 	}
 	
+	/**
+	 * 
+	 */
+	private void encodePassword(){
+		StandardPasswordEncoder encoder = new StandardPasswordEncoder();
+		System.out.println("Admin Password: "+encoder.encode("admin"));
+		System.out.println("User Password: "+encoder.encode("user"));
+		
+	}
 }

@@ -8,10 +8,16 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
     <display-name>Spring Security</display-name>
     <description>Spring Security Sample Web Appplication</description>
 	
+	<context-param>
+        <param-name>spring.profiles.active</param-name>
+        <param-value>jdbc</param-value>
+    </context-param>
+	
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
   	        classpath:META-INF/spring/spring-security.xml
+  	        classpath:META-INF/spring/business-config.xml
         </param-value>
     </context-param>
 	    
@@ -57,6 +63,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
   	</listener>
 	<error-page>
 	  <error-code>404</error-code>
-	  <location>/WEB-INF/jsp/layout-404.jsp</location>
+	  <location>/WEB-INF/jsp/error/layout-404.jsp</location>
 	</error-page>
 </web-app>

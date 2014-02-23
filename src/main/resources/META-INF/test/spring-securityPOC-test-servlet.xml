@@ -13,13 +13,13 @@
 		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 	
 	<!--Separate Servlet context configuration for testings since tiles configuration is messing up with JUnit  -->
-	
+	<import resource="classpath:META-INF/spring/business-config.xml"/>
 	<!-- Activates various annotations to be detected in bean classes -->
 	<context:annotation-config />
 	
 	<!-- Scans the classpath for annotated components that will be auto-registered as Spring beans.
 	 For example @Controller and @Service. Make sure to set the correct base-package-->
-	<context:component-scan base-package="com.acss.poc.controller" />
+	<context:component-scan base-package="com.acss.poc.*" />
 	
 	<!-- Configures the annotation-driven Spring MVC Controller programming model.
 	Note that, with Spring 3.0, this tag works in Servlet MVC only!  -->

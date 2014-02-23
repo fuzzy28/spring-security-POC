@@ -5,18 +5,16 @@
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<!-- This is where we configure Spring-Security -->
+	
+	<!-- No Security for resources such as css,js,image etc. -->
+	<security:http pattern="/resources" security="none"/>
 	<security:http use-expressions="true" access-denied-page="/auth/denied">
-
-		<security:intercept-url pattern="/auth/login"
-			access="permitAll" />
-		<security:intercept-url pattern="/auth/logout"
-			access="permitAll" />
-		<security:intercept-url pattern="/main/admin"
-			access="hasRole('ROLE_ADMIN')" />
-		<security:intercept-url pattern="/main/user"
-			access="hasRole('ROLE_USER')" />
-		<security:intercept-url pattern="/main/common"
-			access="isAuthenticated()" />
+		
+		<security:intercept-url pattern="/auth/login" access="permitAll" />
+		<security:intercept-url pattern="/auth/logout" access="permitAll" />
+		<security:intercept-url pattern="/main/admin" access="hasRole('ROLE_ADMIN')" />
+		<security:intercept-url pattern="/main/user" access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/main/common" access="isAuthenticated()" />
 
 
 		<!--Instead of sticking with the defaults, lets define something to hide 
@@ -34,8 +32,7 @@
 		<security:session-management
 			session-authentication-error-url="/auth/session-failed">
 			
-			<security:concurrency-control
-				max-sessions="1" expired-url="/auth/session-failed" />
+			<security:concurrency-control max-sessions="1" expired-url="/auth/session-failed"/>
 		
 		</security:session-management>
 
@@ -44,7 +41,7 @@
 	<!-- Declare an authentication-manager to use a custom userDetailsService -->
 	<security:authentication-manager>
 		<security:authentication-provider
-			user-service-ref="userDetailsService">
+			user-service-ref="userService">
 			<security:password-encoder ref="passwordEncoder" />
 		</security:authentication-provider>
 	</security:authentication-manager>
@@ -52,17 +49,23 @@
 	<!-- Use a Md5 encoder since the user's passwords are stored as Md5 in the 
 		database -->
 	<bean
-		class="org.springframework.security.authentication.encoding.Md5PasswordEncoder"
+		class="org.springframework.security.crypto.password.StandardPasswordEncoder"
 		id="passwordEncoder" />
-
-	<!-- An in-memory list of users. No need to access an external database 
-		layer. See Spring Security 3.1 Reference 5.2.1 In-Memory Authentication -->
-	<!-- admin's password is admin, while user's password is user -->
+	
+	<bean class="com.acss.poc.account.UserService" id="userService" />
+	
+	
+	<!--  
+	 An in-memory list of users. No need to access an external database 
+		layer. See Spring Security 3.1 Reference 5.2.1 In-Memory Authentication 
+	 admin's password is admin, while user's password is user 
 	<security:user-service id="userDetailsService">
 		<security:user name="admin" password="21232f297a57a5a743894a0e4a801fc3"
 			authorities="ROLE_USER, ROLE_ADMIN" />
 		<security:user name="user" password="ee11cbb19052e40b07aac0ca060c23ee"
 			authorities="ROLE_USER" />
 	</security:user-service>
-
+	
+	-->
+	
 </beans>

@@ -4,45 +4,45 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
        
 <tiles-definitions>
-    <definition name="base.definition" template="/WEB-INF/jsp/layout.jsp">
+    <definition name="base.definition" template="/WEB-INF/jsp/common/layout.jsp">
         <put-attribute name="title" value="" />
-        <put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/jsp/menu.jsp" />
+        <put-attribute name="header" value="/WEB-INF/jsp/common/header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/common/menu.jsp" />
         <put-attribute name="body" value="" />
-        <put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
     </definition>
  
     <definition name="commonpage" extends="base.definition">
         <put-attribute name="title" value="Common Page" />
-        <put-attribute name="body" value="/WEB-INF/jsp/commonpage.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/home/commonpage.jsp" />
     </definition>
     
-    <definition name="loginpage" template="/WEB-INF/jsp/layout-login.jsp">
+    <definition name="loginpage" template="/WEB-INF/jsp/common/layout-login.jsp">
         <put-attribute name="title" value="Login Page" />  
-        <put-attribute name="body" value="/WEB-INF/jsp/loginpage.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/common/loginpage.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
     </definition>
     
     <definition name="deniedpage" extends="loginpage">
         <put-attribute name="title" value="Denied Page" />
-        <put-attribute name="body" value="/WEB-INF/jsp/deniedpage.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/error/deniedpage.jsp" />
     </definition>
  	
  	<definition name="adminpage" extends="base.definition">
         <put-attribute name="title" value="Admin Page" />
-        <put-attribute name="body" value="/WEB-INF/jsp/adminpage.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/home/adminpage.jsp" />
     </definition>
     
     <definition name="userpage" extends="base.definition">
         <put-attribute name="title" value="User Page" />
-        <put-attribute name="body" value="/WEB-INF/jsp/userpage.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/home/userpage.jsp" />
     </definition>
     	
 	<definition name="404" extends="loginpage">
         <put-attribute name="title" value="Page Not Found" />
-    	<put-attribute name="header" value="/WEB-INF/jsp/header.jsp" />    
+    	<put-attribute name="header" value="/WEB-INF/jsp/common/header.jsp" />    
         <put-attribute name="body" value="/WEB-INF/jsp/error/404.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/jsp/footer.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
     </definition>
     
 </tiles-definitions>
