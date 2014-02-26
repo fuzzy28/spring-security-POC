@@ -1,0 +1,38 @@
+@CHARSET "UTF-8";
+
+.container-signin {
+    width: 600px;
+}
+.form-signin {
+max-width: 330px;
+padding: 15px;
+margin: 0 auto;
+}
+
+.navbar-right {
+float: right!important;
+}
+
+.container-left {
+float: left!important;
+padding: 15px;
+margin: 0 auto;
+position:fixed;
+z-index:1;
+
+}
+
+.navbar-nav.navbar-right:last-child {
+margin-right: -15px;
+}
+
+
+
+#leftMenu .accordion-group {
+    margin-bottom: 0px;
+    border:0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
