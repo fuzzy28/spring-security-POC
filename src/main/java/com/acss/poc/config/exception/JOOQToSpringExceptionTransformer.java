@@ -16,10 +16,12 @@ import org.springframework.jdbc.support.SQLStateSQLExceptionTranslator;
  */
 public class JOOQToSpringExceptionTransformer extends DefaultExecuteListener {
 
-    /**
+
+
+	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 4738008576305765810L;
+	private static final long serialVersionUID = 1L;
 
 	@Override
     public void exception(ExecuteContext ctx) {

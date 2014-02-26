@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE tiles-definitions PUBLIC
-       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
-       
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
 <tiles-definitions>
     <definition name="base.definition" template="/WEB-INF/jsp/common/layout.jsp">
         <put-attribute name="title" value="" />
-        <put-attribute name="header" value="/WEB-INF/jsp/common/header.jsp" />
+        <put-attribute name="navbar" value="/WEB-INF/jsp/common/navbar.jsp" />
         <put-attribute name="menu" value="/WEB-INF/jsp/common/menu.jsp" />
         <put-attribute name="body" value="" />
         <put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
@@ -18,12 +15,13 @@
     </definition>
     
     <definition name="loginpage" template="/WEB-INF/jsp/common/layout-login.jsp">
-        <put-attribute name="title" value="Login Page" />  
+        <put-attribute name="title" value="Login Page" />
+        <put-attribute name="navbar" value="/WEB-INF/jsp/common/navbar.jsp"></put-attribute>
         <put-attribute name="body" value="/WEB-INF/jsp/common/loginpage.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
+        <put-attribute name="signpage" value="/WEB-INF/jsp/common/signup.jsp" />
     </definition>
     
-    <definition name="deniedpage" extends="loginpage">
+    <definition name="deniedpage" extends="base.definition">
         <put-attribute name="title" value="Denied Page" />
         <put-attribute name="body" value="/WEB-INF/jsp/error/deniedpage.jsp" />
     </definition>
@@ -43,6 +41,11 @@
     	<put-attribute name="header" value="/WEB-INF/jsp/common/header.jsp" />    
         <put-attribute name="body" value="/WEB-INF/jsp/error/404.jsp" />
         <put-attribute name="footer" value="/WEB-INF/jsp/common/footer.jsp" />
+    </definition>
+    
+ 	<definition name="403" extends="base.definition">
+        <put-attribute name="title" value="Denied Page" />
+        <put-attribute name="body" value="/WEB-INF/jsp/error/deniedpage.jsp" />
     </definition>
     
 </tiles-definitions>

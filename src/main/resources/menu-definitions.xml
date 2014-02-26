@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MenuItem>
+	
+	<MenuItem id="Home" text="Home" url="/main/common" access="ROLE_USER">
+		<MenuItem id="Sub-Admin" text="Sub-Tweak Box" url="/main/admin" access="ROLE_ADMIN">
+		</MenuItem>
+	</MenuItem>
+	
+	<MenuItem id="Main Menu" text="Main Menu" url="/main/common" access="ROLE_USER">
+
+		<MenuItem id="Admin" text="Tweak Box" url="/main/admin" access="ROLE_ADMIN">
+
+			<MenuItem id="Sub-Admin 1" text="Sub-Tweak Box" url="/main/admin"
+						access="ROLE_ADMIN">
+			</MenuItem>
+			<MenuItem id="Sub-Admin 2" text="Super Box" url="/main/admin"
+						access="ROLE_ADMIN">
+			</MenuItem>
+			<MenuItem id="Sub-Admin 3" text="Mega Box" url="/main/admin"
+						access="ROLE_ADMIN">
+			</MenuItem>
+
+		</MenuItem>
+
+		<MenuItem id="User" text="Lame Function" url="/main/user"
+			access="ROLE_USER">
+		</MenuItem>
+	</MenuItem>
+
+</MenuItem>

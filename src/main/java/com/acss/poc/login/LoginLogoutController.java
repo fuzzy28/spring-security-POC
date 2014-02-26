@@ -1,6 +1,5 @@
 package com.acss.poc.login;
 
-import org.apache.log4j.Logger;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,20 +8,19 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.acss.poc.core.AwesomeBaseController;
+
 /**
  * Handles and retrieves the login or denied page depending on the URI template
  */
 @Controller
 @RequestMapping("/auth")
-public class LoginLogoutController {
-	
-	protected static Logger logger = Logger.getLogger("controller");
+public class LoginLogoutController extends AwesomeBaseController{
 	
 	/**
 	 * View Definitions
 	 */
 	private static String HOME_PAGE="commonpage";
-	private static String DENIED_PAGE="deniedpage";
 	private static String LOGIN_PAGE="loginpage";
 	
 	/**
@@ -35,7 +33,13 @@ public class LoginLogoutController {
 		
 		return getViewNameIfAuthenticated(LOGIN_PAGE);
 	}
-
+	
+	
+	/**
+	 * If user is already authenticated, stay on the main page.
+	 * @param targetPage
+	 * @return
+	 */
 	private String getViewNameIfAuthenticated(String targetPage) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
@@ -46,16 +50,6 @@ public class LoginLogoutController {
 		return targetPage;
 	}
 
-	/**
-	 * Handles and retrieves the denied JSP page. This is shown whenever a
-	 * regular user tries to access an admin only page.
-	 * 
-	 * @return the name of the JSP page
-	 */
-	@RequestMapping(value = "/denied", method = RequestMethod.GET)
-	public String getDeniedPage() {
-		return DENIED_PAGE;
-	}
 	
 	/**
 	 * Handles redirection to login page after logout.
@@ -65,8 +59,7 @@ public class LoginLogoutController {
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
  	public String logoutSuccess(ModelMap model) {
 		String message = "Logout Success!";
-		model.put("message", message);
-				
+		addInfoMessage(model, message);
 		return getViewNameIfAuthenticated(LOGIN_PAGE);
 	}
 	
@@ -78,8 +71,7 @@ public class LoginLogoutController {
 	@RequestMapping(value = "/failed", method = RequestMethod.GET)
  	public String loginFailed(ModelMap model) {
 		String message = "You have entered an invalid username or password!";
-		model.put("message", message);
-		
+		addErrorMessage(model, message);
 		return getViewNameIfAuthenticated(LOGIN_PAGE);
 	}
 	
@@ -91,8 +83,7 @@ public class LoginLogoutController {
 	@RequestMapping(value = "/session-failed", method = RequestMethod.GET)
  	public String sessionFailed(ModelMap model) {
 		String message = "You're current session has been invalidated due to concurrent login.";
-		model.put("message", message);
-		
+		addErrorMessage(model, message);
 		return getViewNameIfAuthenticated(LOGIN_PAGE);
 	}
 	

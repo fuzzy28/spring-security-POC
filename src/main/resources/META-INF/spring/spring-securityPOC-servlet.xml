@@ -23,16 +23,30 @@
 	<!-- Configures the annotation-driven Spring MVC Controller programming model.
 	Note that, with Spring 3.0, this tag works in Servlet MVC only!  -->
 	<mvc:annotation-driven />
-		
-	<!-- Controls the caching of page  -->
+	<mvc:resources mapping="/resources/**" location="/resources/,classpath:/resources/" />
+	<mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
+	
+	
 	<mvc:interceptors>
-        <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
-                <property name="cacheSeconds" value="0"/>
-                <property name="useExpiresHeader" value="false"/>
-                <property name="useCacheControlHeader" value="true"/>
-                <property name="useCacheControlNoStore" value="true"/>
-        </bean>     
+		<!--Intercept only for controllers who needs a menu: /main/*  -->
+		<mvc:interceptor>
+        	<mvc:mapping path="/main/**"/>
+        	<mvc:mapping path="/auth/**"/>
+        	<bean id="menuLoader" class="com.acss.poc.main.interceptors.MenuLoader" />
+   	 	</mvc:interceptor>
+   	 	
+		<!-- Controls the caching of page  -->
+	    <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+	            <property name="cacheSeconds" value="0"/>
+	            <property name="useExpiresHeader" value="false"/>
+	            <property name="useCacheControlHeader" value="true"/>
+	            <property name="useCacheControlNoStore" value="true"/>
+	    </bean>
     </mvc:interceptors>
+	
+	<bean id="menuService" class="com.acss.poc.main.MenuService"
+		p:file="classpath:/META-INF/props/menu-definitions.xml"
+	/>
 	
 	<!-- Made a profile for viewResolver since test cannot proceed if on tiles 
 		 Just use the org.springframework.web.servlet.view.InternalResourceViewResolver

@@ -1,0 +1,39 @@
+package com.acss.poc.core;
+
+/**
+ * Message bean for notification purposes.
+ * @author gvargas.local
+ *
+ */
+public class Message {
+
+	private String infoMsg;
+	private String isError;
+	final static String MESSAGE_KEY = "message";
+	final static String TRUE = "true";
+	final static String FALSE = "false";
+	
+	public Message() {}
+	
+	public String getInfo() {
+		return infoMsg;
+	}
+
+
+	public void setInfo(String info) {
+		this.infoMsg = info;
+	}
+
+
+	public String getIsError() {
+		return isError;
+	}
+
+	public void setIsError(String isError) {
+		this.isError = isError;
+	}
+	
+	
+
+	
+}

@@ -15,10 +15,8 @@
 		<!-- import the dataSource definition -->
     	<import resource="datasource-config.xml"/>
     	
-    	<context:component-scan
-            base-package="com.acss.poc.*"/>
+    	<context:component-scan base-package="com.acss.poc.*"/>
     	
-			
 		<beans profile="jdbc,test">
 		    <!-- Transaction manager for a single JDBC DataSource (alternative to JTA) -->
 		    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
@@ -32,8 +30,6 @@
 		          class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
 		        <constructor-arg ref="dataSource"/>
 		    </bean>
-		
-		    <context:component-scan base-package="com.acss.poc.*"/>
 		</beans>
     
 		<!--reserved for future  -->

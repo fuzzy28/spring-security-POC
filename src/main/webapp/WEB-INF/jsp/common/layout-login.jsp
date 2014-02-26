@@ -1,20 +1,31 @@
+<!DOCTYPE html>
+<!--Default Block is from here...  -->
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title><tiles:insertAttribute name="title" ignore="true" /></title>
-</head>
+<jsp:include page="../fragments/headTag.jsp"/>
 <body>
-<table border="1" cellpadding="2" cellspacing="2" align="center">
-    <tr>
-        <td width="350"><tiles:insertAttribute name="body" /></td>
-    </tr>
-    <tr>
-        <td height="30" colspan="2"><tiles:insertAttribute name="footer" />
-        </td>
-    </tr>
-</table>
+<!--to here  -->
+
+<nav class="navbar navbar-default" role="navigation">
+</nav>
+<div class="container" style="width : 500px">
+		<div class="well">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+				<li><a href="#create" data-toggle="tab">Create Account</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane active in" id="login">
+					<tiles:insertAttribute name="body" />
+				</div>
+				<div class="tab-pane fade" id="create">
+					<tiles:insertAttribute name="signpage" />
+				</div>
+			</div>
+			
+		</div><!--well  -->
+
+</div><!-- container  -->
+
 </body>
 </html>

@@ -18,7 +18,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.test.context.ActiveProfiles;
@@ -61,7 +60,6 @@ public class WhenLoggingIn{
 	@Before
 	public void setUp(){
 		mockMvc = MockMvcBuilders.webAppContextSetup(ctx).addFilter(springSecurityFilterChain,"/*").alwaysDo(print()).build();
-		encodePassword();
 	}
 	
 	@Test
@@ -173,7 +171,7 @@ public class WhenLoggingIn{
 	@Test
 	public void shouldReturnAccessDeniedPageOnInvalidRole() throws Exception{
 		//arrange
-		final String deniedPage = "/auth/denied";
+		final String deniedPage = "/main/denied";
 		//user is having 'user role'
 		Authentication authentication =
                 new UsernamePasswordAuthenticationToken("user", "user");
@@ -233,13 +231,4 @@ public class WhenLoggingIn{
 		return session;
 	}
 	
-	/**
-	 * 
-	 */
-	private void encodePassword(){
-		StandardPasswordEncoder encoder = new StandardPasswordEncoder();
-		System.out.println("Admin Password: "+encoder.encode("admin"));
-		System.out.println("User Password: "+encoder.encode("user"));
-		
-	}
 }
