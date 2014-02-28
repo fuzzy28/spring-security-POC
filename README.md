@@ -1,6 +1,9 @@
 Spring-security-POC
 ----------------------------
-A POC on spring-security which includes simple in memory authentication and authorization. Used tiles as view (simple implementation). JUnit for Unit testing.
+A POC on spring-security which features 
+Authentication and authorization. 
+Used tiles as view (simple implementation). 
+JUnit for Unit/Integration testing.
 
 Features:
 
@@ -9,6 +12,8 @@ Features:
 * Authorization using spring-security taglib
 * Tiles as view layer
 * Twitter bootstrap/Jquery in front end
+
+
 ---------------------------
 Deployment guide:
 
