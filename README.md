@@ -43,7 +43,7 @@ Common Page - Admin user is currently logged. Admin Menu and User Menu available
 ![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/gui/screenshot/commonpage.png)
 
 ---------------------------
-User Page - Admin Menu not accessible
+Admin Page - Only admin can access
 ![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/gui/screenshot/userpage.png)
 
 ---------------------------
