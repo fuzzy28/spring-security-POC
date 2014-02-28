@@ -4,10 +4,11 @@ A POC on spring-security which includes simple in memory authentication and auth
 
 Features:
 
-* In memory authentication (will release with database layer)
+* HSQL Database Layer
 * Allowed session concurrency = 1 (invalidate 1st session)
 * Authorization using spring-security taglib
 * Tiles as view layer
+* Twitter bootstrap/Jquery in front end
 ---------------------------
 Deployment guide:
 
@@ -30,23 +31,23 @@ Screenshots:
 
 ---------------------------
 Login Page
-![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/tiles/screenshot/loginpage.png)
+![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/gui/screenshot/loginpage.png)
 
 ---------------------------
 Common Page - Admin user is currently logged. Admin Menu and User Menu available.
-![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/tiles/screenshot/commonpage.png)
+![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/gui/screenshot/commonpage.png)
 
 ---------------------------
 User Page - Admin Menu not accessible
-![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/tiles/screenshot/userpage.png)
+![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/gui/screenshot/userpage.png)
 
 ---------------------------
 Denied Page - Using user account and attempt to access secured page.
-![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/tiles/screenshot/denied.png)
+![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/gui/screenshot/denied.png)
 
 ---------------------------
 404 Page - Replace Tomcat generic 404 page with custom page
-![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/tiles/screenshot/404.png)
+![Maven Screenshot](https://raw.github.com/ultragaylord/spring-security-POC/new/gui/screenshot/404.png)
 
 
 
