@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:url value="/logout" var="logoutUrl"/>
+<c:url value="/account/exception" var="exceptionUrl"/>
 
 <nav class="navbar navbar-default navbar-fixed-top" style="width:1350px" role="navigation">
 <div class="container">
@@ -18,6 +19,7 @@
             <li><a href="#">One more separated link</a></li>
           </ul>
         </li>
+        <li><a href="${exceptionUrl}">Exception Demo</a></li>
 </ul> 
 <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Account Settings</a></li>

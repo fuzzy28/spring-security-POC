@@ -46,7 +46,6 @@ public class LoginLogoutController extends AwesomeBaseController{
 			//change view into home page.
 		    targetPage = HOME_PAGE;
 		}
-		logger.debug("Received request to show page: "+targetPage);
 		return targetPage;
 	}
 

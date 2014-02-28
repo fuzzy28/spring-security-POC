@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.acss.poc.main.exception.MenuServiceException;
+
 @Controller
 @Secured("ROLE_USER")
 class AccountController {
 
     private AccountRepository accountRepository;
-
+    
+    public AccountController(){}
+    
     @Autowired
     public AccountController(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
@@ -29,5 +33,10 @@ class AccountController {
     public Account accounts(Principal principal) {
         Assert.notNull(principal);
         return accountRepository.findByUserName(principal.getName());
+    }
+    
+    @RequestMapping(value = "account/exception", method = RequestMethod.GET)
+    public String exceptionDemo() throws MenuServiceException{
+    	throw new MenuServiceException("Demo for Exception Logs and Exceptioon Handing. . .");
     }
 }

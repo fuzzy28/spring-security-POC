@@ -4,13 +4,16 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context 
 		http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/mvc 
-		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
 		
 	<import resource="business-config.xml"/>
 	<!-- Activates various annotations to be detected in bean classes -->
@@ -19,6 +22,7 @@
 	<!-- Scans the classpath for annotated components that will be auto-registered as Spring beans.
 	 For example @Controller and @Service. Make sure to set the correct base-package-->
 	<context:component-scan base-package="com.acss.poc.*" />
+	<aop:aspectj-autoproxy/>
 	
 	<!-- Configures the annotation-driven Spring MVC Controller programming model.
 	Note that, with Spring 3.0, this tag works in Servlet MVC only!  -->
@@ -31,7 +35,6 @@
 		<!--Intercept only for controllers who needs a menu: /main/*  -->
 		<mvc:interceptor>
         	<mvc:mapping path="/main/**"/>
-        	<mvc:mapping path="/auth/**"/>
         	<bean id="menuLoader" class="com.acss.poc.main.interceptors.MenuLoader" />
    	 	</mvc:interceptor>
    	 	
@@ -43,10 +46,6 @@
 	            <property name="useCacheControlNoStore" value="true"/>
 	    </bean>
     </mvc:interceptors>
-	
-	<bean id="menuService" class="com.acss.poc.main.MenuService"
-		p:file="classpath:/META-INF/props/menu-definitions.xml"
-	/>
 	
 	<!-- Made a profile for viewResolver since test cannot proceed if on tiles 
 		 Just use the org.springframework.web.servlet.view.InternalResourceViewResolver

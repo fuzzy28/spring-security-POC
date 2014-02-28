@@ -5,9 +5,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
-import javax.persistence.PersistenceException;
-
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
@@ -17,8 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional(readOnly = true)
-public class AccountRepository {
-	protected static Logger logger = Logger.getLogger("dao");
+public class AccountRepository{
+
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
@@ -33,7 +30,6 @@ public class AccountRepository {
 	}
 	
 	public Account findByUserName(String username) {
-		try {
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("username", username);
 			
@@ -49,11 +45,7 @@ public class AccountRepository {
 					params,ParameterizedBeanPropertyRowMapper.newInstance(UserRole.class));
 			
 			account.setAuthorities(new HashSet<UserRole> (authorities));
-			logger.debug("user successfully retrieved");
+			
 			return account;
-		} catch (PersistenceException e) {
-			logger.debug(e.getMessage());
-			return null;
-		}
 	}
 }

@@ -20,7 +20,8 @@
 			authentication-failure-url="/auth/failed" 
 			login-processing-url="/login-check"
 			username-parameter="username" 
-			password-parameter="password" />
+			password-parameter="password"
+			always-use-default-target="true"/>
 
 		<security:logout logout-url="/logout"
 			invalidate-session="true" 

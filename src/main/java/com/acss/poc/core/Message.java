@@ -10,8 +10,8 @@ public class Message {
 	private String infoMsg;
 	private String isError;
 	final static String MESSAGE_KEY = "message";
-	final static String TRUE = "true";
-	final static String FALSE = "false";
+	public final static String TRUE = "true";
+	public final static String FALSE = "false";
 	
 	public Message() {}
 	

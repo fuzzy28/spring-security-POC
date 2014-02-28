@@ -39,12 +39,12 @@ public class MenuService {
 		JAXBContext jc = JAXBContext.newInstance(MenuItem.class);
 		
         Unmarshaller unmarshaller = jc.createUnmarshaller();
-        System.out.println("Getting file from this "+this.file.getFilename());
+        
         File xml = file.getFile();
         
         	MenuItem menuItem = (MenuItem) unmarshaller.unmarshal(xml);
         	this.menuItem = menuItem;
-        	System.out.println("=====Menu-Definitions Marshalled!!!=====");
+        	
         }catch(JAXBException e){
         	throw new MenuServiceException("Error parsing the XML",e);
         } catch (IOException e) {

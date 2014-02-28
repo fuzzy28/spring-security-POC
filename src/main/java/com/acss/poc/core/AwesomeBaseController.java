@@ -1,12 +1,15 @@
 package com.acss.poc.core;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 
+@Controller
 public class AwesomeBaseController {
 	
 	protected Message message;
-	protected static Logger logger = Logger.getLogger("controller");
+	protected static Logger logger = LoggerFactory.getLogger("controller");
 	
 	public AwesomeBaseController() {
 		message = new Message();
