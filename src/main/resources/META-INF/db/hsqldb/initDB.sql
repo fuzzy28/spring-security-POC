@@ -7,8 +7,7 @@ CREATE TABLE m_account (
   last_name  VARCHAR(30),
   username	 VARCHAR(30),
   password   VARCHAR(200),
-  email   	 VARCHAR(30),
-  role		 VARCHAR(30)
+  email   	 VARCHAR(30)
 );
 
 CREATE INDEX m_account_last_name ON m_account (last_name);
@@ -16,6 +15,6 @@ CREATE INDEX m_account_last_name ON m_account (last_name);
 CREATE TABLE m_account_roles (
   id   INTEGER IDENTITY PRIMARY KEY,
   role VARCHAR(30),
-  m_account_id INTEGER NOT NULL
+  username VARCHAR(30)
 );
 CREATE INDEX m_account_roles_role ON m_account_roles (role);

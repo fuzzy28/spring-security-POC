@@ -14,6 +14,11 @@
         <put-attribute name="body" value="/WEB-INF/jsp/home/commonpage.jsp" />
     </definition>
     
+    <definition name="accountpage" extends="base.definition">
+        <put-attribute name="title" value="My Account" />
+        <put-attribute name="body" value="/WEB-INF/jsp/account/account.jsp" />
+    </definition>
+    
     <definition name="loginpage" template="/WEB-INF/jsp/common/layout-login.jsp">
         <put-attribute name="title" value="Login Page" />
         <put-attribute name="navbar" value="/WEB-INF/jsp/common/navbar.jsp"></put-attribute>

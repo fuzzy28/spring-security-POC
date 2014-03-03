@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
+<sec:authorize ifAnyGranted="ROLE_ADMIN">
+
 <div class="container-left">
                <div class="accordion" id="leftMenu">
                     <div class="accordion-group">
@@ -93,3 +95,5 @@
                     </div>
                 </div>
 </div>
+
+</sec:authorize>

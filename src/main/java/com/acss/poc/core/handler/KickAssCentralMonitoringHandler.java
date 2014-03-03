@@ -20,7 +20,7 @@ public class KickAssCentralMonitoringHandler {
         long startTime = System.currentTimeMillis();
         Object result = jp.proceed();
         long totalTime = System.currentTimeMillis() - startTime;
-        monitorLogger.info("{}|Invocation time {}ms ", service.getClass().getSimpleName(), totalTime);
+        monitorLogger.info("{} - {} | Invocation time {}ms ",service.getClass().getSimpleName(),jp.getSignature().getName(), totalTime);
         
         return result;
     }

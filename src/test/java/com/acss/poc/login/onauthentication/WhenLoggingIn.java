@@ -44,8 +44,8 @@ import com.acss.poc.main.MainController;
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ActiveProfiles("test")
-//used a separate -servlet context since tiles is messing up.
-@ContextConfiguration(locations = {"classpath:META-INF/spring/spring-security.xml",
+@ContextConfiguration(locations = { "classpath:META-INF/spring/business-config.xml",
+									"classpath:META-INF/spring/spring-security.xml",
 								   "classpath:META-INF/spring/spring-securityPOC-servlet.xml"})
 public class WhenLoggingIn{
 		

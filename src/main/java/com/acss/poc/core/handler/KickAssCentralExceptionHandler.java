@@ -5,7 +5,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.jooq.exception.DataAccessException;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.stereotype.Component;
 
 import com.acss.poc.core.Message;
@@ -34,7 +34,7 @@ public class KickAssCentralExceptionHandler {
         
         try {
             view = (String) jp.proceed();
-        } catch (DataAccessException e) {
+        } catch (DataAccessResourceFailureException e) {
             errorLogger.error("error in {}", controller.getClass().getSimpleName(), e);
             msg.setInfo(e.getMessage());
             msg.setIsError(Message.TRUE);

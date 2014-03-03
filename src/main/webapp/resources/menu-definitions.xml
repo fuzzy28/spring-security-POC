@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<MenuRoot>
-    <Menu id="Home" text="Home" url="/main/common" access="hasRole('ROLE_ADMIN')"></Menu>
-    <Menu id="Main Menu" text="Projects" url="/main/common" access="hasRole('ROLE_ADMIN')">
-        <SubMenu id="Admin" text="Tweak Box" url="/main/admin" access="hasRole('ROLE_ADMIN')"></SubMenu>
-        <SubMenu id="User" text="Lame Function" url="/main/user" access="hasRole('ROLE_USER')"></SubMenu>
-    </Menu>
-</MenuRoot>

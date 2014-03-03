@@ -1,5 +1,6 @@
 <form id="tab">
-	<label>Username</label> <input type="text" value="" class="input-xlarge"> 
+	<label>Username</label> <input type="text" value="" class="input-xlarge">
+	<label>Password</label> <input type="password" value="" class="input-xlarge"> 
 	<label>First Name</label> <input type="text" value="" class="input-xlarge"> 
 	<label>Last	Name</label> <input type="text" value="" class="input-xlarge"> 
 	<label>Email</label> <input type="text" value="" class="input-xlarge"> 

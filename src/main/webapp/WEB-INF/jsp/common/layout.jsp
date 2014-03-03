@@ -16,8 +16,6 @@
 <div class="container theme-showcase" >
 	<div class="jumbotron">
 			<tiles:insertAttribute name="body" />
-	        <p><a href="#" class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
-	        
 	</div>
 </div>
 

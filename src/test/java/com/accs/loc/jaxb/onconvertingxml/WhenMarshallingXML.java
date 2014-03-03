@@ -21,7 +21,7 @@ public class WhenMarshallingXML {
 		JAXBContext jc = JAXBContext.newInstance(MenuItem.class);
 
         Unmarshaller unmarshaller = jc.createUnmarshaller();
-        File xml = new File("src/main/resources/menu-definitions.xml");
+        File xml = new File("src/main/resources/META-INF/props/menu-definitions.xml");
         MenuItem a = (MenuItem) unmarshaller.unmarshal(xml);
         
         Marshaller marshaller = jc.createMarshaller();
@@ -30,7 +30,7 @@ public class WhenMarshallingXML {
         //act
         marshaller.marshal(a, System.out);
         
-        //assert
+        //assert 2 is the default written on the xml.
         assertEquals(2,a.getMenuItems().size());
         
         for(MenuItem menu : a.getMenuItems()){

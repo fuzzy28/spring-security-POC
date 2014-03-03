@@ -22,4 +22,5 @@ public class KickAssCentralLoggingHandler {
 	public void logServiceAccess(Object service) {
 		mainLogger.debug("Accessing {}", service.getClass().getSimpleName());
 	}
+
 }

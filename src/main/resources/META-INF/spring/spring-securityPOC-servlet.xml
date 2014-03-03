@@ -15,7 +15,7 @@
 		http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
 		
-	<import resource="business-config.xml"/>
+	<!-- 	<import resource="business-config.xml"/> -->
 	<!-- Activates various annotations to be detected in bean classes -->
 	<context:annotation-config />
 	
