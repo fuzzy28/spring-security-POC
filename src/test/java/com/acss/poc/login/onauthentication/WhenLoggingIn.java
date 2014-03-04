@@ -196,7 +196,7 @@ public class WhenLoggingIn{
 	public void shouldStayOnCommonPageOnWhileLoggedIn() throws Exception{
 		//Arrange
 		//common page which will be redirected into while logged in and not login page.
-		String commonPage = "/WEB-INF/jsp/commonpage.jsp";
+		String redirectedTo = "../main/common";
 		//user is having 'user role'
 		Authentication authentication =
                 new UsernamePasswordAuthenticationToken("user", "user");
@@ -211,9 +211,9 @@ public class WhenLoggingIn{
 				.session(session)
 	            .contentType(MediaType.TEXT_HTML)
 	            .accept(MediaType.TEXT_HTML))
-	            .andExpect(status().isOk())
-	            .andExpect(redirectedUrl(null))
-	            .andExpect(forwardedUrl(commonPage));
+	            .andExpect(status().is(302))
+	            .andExpect(redirectedUrl(redirectedTo))
+	            .andExpect(forwardedUrl(null));
 	}
 	
 	/**
