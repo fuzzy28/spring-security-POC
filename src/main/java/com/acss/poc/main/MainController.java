@@ -39,7 +39,6 @@ public class MainController extends AwesomeBaseController{
 	 */
 	@RequestMapping(value = "/common", method = RequestMethod.GET)
 	public String getCommonPage(){
-		logger.debug("Received request to show common page");
 		return HOME_PAGE;
 	}
 
@@ -50,7 +49,6 @@ public class MainController extends AwesomeBaseController{
 	 */
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String getAdminPage() {
-		logger.debug("Received request to show admin page");
 		return ADMIN_PAGE;
 	}
 	

@@ -19,6 +19,7 @@ import com.acss.poc.main.exception.MenuServiceException;
 /**
  * This Handlder is so awesome that 
  * it centralized the logging mechanism all accross the code.
+ * On top of that it could also present the exception page so awesome!
  * 
  * so we are focused on code and not being distracted with logger object all over
  * the place in our code.
@@ -32,6 +33,18 @@ public class KickAssCentralExceptionHandler {
 
 	private static Logger errorLogger = LoggerFactory.getLogger("errors");
 	
+	
+	/** 
+	 * Handles the exception logging and view..
+	 * A mandatory for controllers that may throw exception.
+	 * always return a ModelAndView Object.
+	 * 
+	 * 
+	 * @param jp
+	 * @param controller
+	 * @return
+	 * @throws Throwable
+	 */
     @Around("@annotation(org.springframework.web.bind.annotation.RequestMapping) && target(controller)")
     public Object handleException(ProceedingJoinPoint jp, Object controller) throws Throwable {
         Object view = null;

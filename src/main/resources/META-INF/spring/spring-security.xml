@@ -33,7 +33,9 @@
 		</security:session-management>
 	</security:http>
 	
-	<!-- Declare an authentication-manager to use a custom userDetailsService -->
+	<!-- Declare an authentication-manager to use a custom userDetailsService 
+		 Autowired this registered bean from this package com.acss.poc.security
+	-->
 	<security:authentication-manager>
 		<security:authentication-provider
 			user-service-ref="userService">
