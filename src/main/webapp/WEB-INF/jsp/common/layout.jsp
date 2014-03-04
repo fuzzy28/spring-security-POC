@@ -4,7 +4,9 @@
 <html>
 <jsp:include page="../fragments/headTag.jsp"/>
 
-<body role="document">
+<body style="width:1350px" role="document">
+
+
 <!--For fixed navi bar to prevent it from eating the top screen.  -->
 <div class="container" style="padding: 50px"></div>
 
@@ -19,9 +21,10 @@
 	</div>
 </div>
 
-
-<div class="footer" style="clear:both;text-align:center;">
+<div class="footer">
+<div class="container">
 	<tiles:insertAttribute name="footer" />
+</div>
 </div>
 
 </body>

@@ -10,12 +10,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.acss.poc.account.Account;
-import com.acss.poc.role.UserRole;
-
 @Component
 @Aspect
-public class KickAssTrancationLogHandler {
+public class KickAssTransactionLogHandler {
 	private static Logger auditLogger = LoggerFactory.getLogger("audit");
 	
 	/**
@@ -25,10 +22,10 @@ public class KickAssTrancationLogHandler {
 	 * @throws InvocationTargetException 
 	 * @throws IllegalAccessException 
 	 */
-	@AfterReturning(pointcut ="execution(* com.acss.poc.*..*Repository+.save(..)) "
+	@AfterReturning(pointcut ="execution(* com.acss.poc.*..*Repository+.save*(..)) "
 			,returning="returnValue")
 	public void logSaveTransaction(Object returnValue) throws IllegalAccessException, InvocationTargetException, NoSuchMethodException{
-		auditLogger.info(describeBean(returnValue) + " has been successfully added.");
+		auditLogger.info(describeBean(returnValue) + " has been successfully saved/updated.");
 	}
 	
 	/**

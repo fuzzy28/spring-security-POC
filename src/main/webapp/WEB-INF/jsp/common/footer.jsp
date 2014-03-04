@@ -1,1 +1,1 @@
-<p>Copyright &copy; spring-security-POC</p>
+<p  class="muted credit">Copyright &copy; spring-security-POC</p>

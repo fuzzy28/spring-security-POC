@@ -17,4 +17,14 @@ public class AccountService implements IAccountService{
 		return accountRepository.findByUserName(username);
 	}
 
+	public Account saveOrUpdate(Account account) {
+		//if user is no longer new then proceed with saving.
+		if(!account.isNew()){
+			Account existingUser = accountRepository.findByUserName(account.getUsername());
+			account.setPassword(existingUser.getPassword());
+		}
+		//if account already exists then proceed with update.
+		return accountRepository.save(account);
+	}
+
 }

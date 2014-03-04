@@ -6,6 +6,7 @@
 	
 	<!-- This is where we configure Spring-Security -->
 	
+	<security:global-method-security secured-annotations="enabled" />
 	<!-- No Security for resources such as css,js,image etc. -->
 	<security:http pattern="/resources/**" security="none"/>
 	<security:http auto-config="true" disable-url-rewriting="true" use-expressions="true" >

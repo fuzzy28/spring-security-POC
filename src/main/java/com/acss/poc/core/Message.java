@@ -12,6 +12,7 @@ public class Message {
 	final static String MESSAGE_KEY = "message";
 	public final static String TRUE = "true";
 	public final static String FALSE = "false";
+	public String exceptionMsg;
 	
 	public Message() {}
 	
@@ -32,8 +33,14 @@ public class Message {
 	public void setIsError(String isError) {
 		this.isError = isError;
 	}
-	
-	
 
+	public String getExceptionMsg() {
+		return exceptionMsg;
+	}
+
+	public void setExceptionMsg(String exceptionMsg) {
+		this.exceptionMsg = exceptionMsg;
+	}
+	
 	
 }

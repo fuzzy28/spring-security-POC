@@ -21,9 +21,9 @@
     
     <definition name="loginpage" template="/WEB-INF/jsp/common/layout-login.jsp">
         <put-attribute name="title" value="Login Page" />
-        <put-attribute name="navbar" value="/WEB-INF/jsp/common/navbar.jsp"></put-attribute>
+        <put-attribute name="navbar" value="/WEB-INF/jsp/common/navbar.jsp" />
         <put-attribute name="body" value="/WEB-INF/jsp/common/loginpage.jsp" />
-        <put-attribute name="signpage" value="/WEB-INF/jsp/common/signup.jsp" />
+        <put-attribute name="signpage" value="/WEB-INF/jsp/account/signup.jsp" />
     </definition>
     
     <definition name="deniedpage" extends="base.definition">
@@ -36,11 +36,25 @@
         <put-attribute name="body" value="/WEB-INF/jsp/home/adminpage.jsp" />
     </definition>
     
+    
+    
     <definition name="userpage" extends="base.definition">
         <put-attribute name="title" value="User Page" />
         <put-attribute name="body" value="/WEB-INF/jsp/home/userpage.jsp" />
     </definition>
     	
+	
+	
+	
+	
+	
+	<!--Error pages  -->
+
+ 	<definition name="exceptionpage" extends="base.definition">
+        <put-attribute name="title" value="Exception" />
+        <put-attribute name="body" value="/WEB-INF/jsp/error/exception.jsp" />
+    </definition>
+    
 	<definition name="404" extends="loginpage">
         <put-attribute name="title" value="Page Not Found" />
     	<put-attribute name="header" value="/WEB-INF/jsp/common/header.jsp" />    

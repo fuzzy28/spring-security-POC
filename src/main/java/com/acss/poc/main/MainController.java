@@ -38,7 +38,7 @@ public class MainController extends AwesomeBaseController{
 	 * @throws JAXBException 
 	 */
 	@RequestMapping(value = "/common", method = RequestMethod.GET)
-	public String getCommonPage() throws JAXBException {
+	public String getCommonPage(){
 		logger.debug("Received request to show common page");
 		return HOME_PAGE;
 	}

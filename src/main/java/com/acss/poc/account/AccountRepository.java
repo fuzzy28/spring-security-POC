@@ -49,8 +49,10 @@ public class AccountRepository implements IAccountRepository{
 	public Account save(Account account) throws  DataAccessException,BadSqlGrammarException{
 		BeanPropertySqlParameterSource userParam = new BeanPropertySqlParameterSource(account);
 		
-		account.setPassword(passwordEncoder.encode(account.getPassword()));
 		if (account.isNew()) {
+			
+			account.setPassword(passwordEncoder.encode(account.getPassword()));
+			
             Number newKey = this.insertAccount.executeAndReturnKey(userParam);
             account.setId(newKey.longValue());
             //Save a default row for the user.
@@ -71,7 +73,7 @@ public class AccountRepository implements IAccountRepository{
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("username", username);
 			Account account = null;
-			try{
+
 			 account = (Account) this.namedParameterJdbcTemplate.queryForObject(
 	                "SELECT * FROM m_account WHERE username = :username",
 	                params,
@@ -84,9 +86,6 @@ public class AccountRepository implements IAccountRepository{
 			
 			account.setAuthorities(new HashSet<UserRole> (authorities));
 			
-			}catch(BadSqlGrammarException e){
-				throw new DataAccessResourceFailureException(e.getMessage());
-			}
 			
 			return account;
 	}

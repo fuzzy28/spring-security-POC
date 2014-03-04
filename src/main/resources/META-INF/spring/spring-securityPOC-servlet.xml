@@ -11,7 +11,7 @@
 		http://www.springframework.org/schema/context 
 		http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/mvc 
-		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
 		
@@ -38,6 +38,11 @@
         	<bean id="menuLoader" class="com.acss.poc.main.interceptors.MenuLoader" />
    	 	</mvc:interceptor>
    	 	
+   	 	<mvc:interceptor>
+        	<mvc:mapping path="/auth/**"/>
+        	<bean id="loginLogoutInterceptor" class="com.acss.poc.main.interceptors.LoginLogoutInterceptor" />
+   	 	</mvc:interceptor>
+   	 	
 		<!-- Controls the caching of page  -->
 	    <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
 	            <property name="cacheSeconds" value="0"/>
@@ -46,6 +51,7 @@
 	            <property name="useCacheControlNoStore" value="true"/>
 	    </bean>
     </mvc:interceptors>
+	
 	
 	<!-- Made a profile for viewResolver since test cannot proceed if on tiles 
 		 Just use the org.springframework.web.servlet.view.InternalResourceViewResolver
