@@ -1,3 +1,9 @@
+<!--Notifications.  -->
+<div class="alert alert-${message.isError=='true'? 'error' : 'success'} alert-dismissable" style="${message==null? 'display: none;' : 'display: block;'}">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<span>${message.info}</span>
+</div>
+
 <!--Includes the taglib declarations for CSS, jquery.  -->
 <h1>Common Page</h1>
 <p>Everyone has access to this page.</p>

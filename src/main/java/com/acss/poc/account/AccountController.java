@@ -50,10 +50,11 @@ public class AccountController extends AwesomeBaseController{
     }
     
     @Secured("ROLE_USER")
-    @RequestMapping(value= "save", method= RequestMethod.POST)
-    public String saveOrUpdate(Account account,ModelMap model){
-    	accountService.saveOrUpdate(account);
-    	return "commonpage";
+    @RequestMapping(value= "save", method = {RequestMethod.POST})
+    public String save(Account account,RedirectAttributes redirectAttributes){
+		accountService.saveOrUpdate(account);
+		addFlashInfoMessage(redirectAttributes, "Account successfully updated.");
+    	return "redirect:/main/common";
     }
     
     /**

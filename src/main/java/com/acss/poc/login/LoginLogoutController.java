@@ -1,8 +1,5 @@
 package com.acss.poc.login;
 
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -23,7 +20,6 @@ public class LoginLogoutController extends AwesomeBaseController{
 	/**
 	 * View Definitions
 	 */
-	private static String HOME_PAGE="commonpage";
 	private static String LOGIN_PAGE="loginpage";
 	
 	//dun know why always demand for this.
@@ -40,22 +36,7 @@ public class LoginLogoutController extends AwesomeBaseController{
 		return LOGIN_PAGE;
 	}
 	
-	
-	/**
-	 * If user is already authenticated, stay on the main page.
-	 * @param targetPage
-	 * @return
-	 */
-	private String getViewNameIfAuthenticated(String targetPage) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if (!(auth instanceof AnonymousAuthenticationToken)) {
-			//change view into home page.
-		    targetPage = HOME_PAGE;
-		}
-		return targetPage;
-	}
 
-	
 	/**
 	 * Handles redirection to login page after logout.
 	 * @param model
@@ -66,7 +47,7 @@ public class LoginLogoutController extends AwesomeBaseController{
 		String message = "Logout Success!";
 		addInfoMessage(model, message);
 		//for registration on login screen.
-		return getViewNameIfAuthenticated(LOGIN_PAGE);
+		return LOGIN_PAGE;
 	}
 	
 	/**
@@ -78,7 +59,7 @@ public class LoginLogoutController extends AwesomeBaseController{
  	public String loginFailed(ModelMap model) {
 		String message = "You have entered an invalid username or password!";
 		addErrorMessage(model, message);
-		return getViewNameIfAuthenticated(LOGIN_PAGE);
+		return LOGIN_PAGE;
 	}
 	
 	/**
@@ -91,7 +72,7 @@ public class LoginLogoutController extends AwesomeBaseController{
  	public String sessionFailed(ModelMap model) {
 		String message = "You're current session has been invalidated due to concurrent login.";
 		addErrorMessage(model, message);
-		return getViewNameIfAuthenticated(LOGIN_PAGE);
+		return LOGIN_PAGE;
 	}
 	
 	

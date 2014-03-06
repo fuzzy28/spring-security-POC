@@ -1,5 +1,13 @@
+<script>
+$(document).ready(function () {
+
+   validateForm('#signinForm');
+
+});
+</script>
+
 <!-- let spring-security do his thing. -->
-<form class="form-signin" action='../login-check' method="POST">
+<form id="signinForm" class="form-signin" action='../login-check' method="POST">
 	
 	<fieldset>
 		<div class="alert alert-${message.isError=='true'? 'error' : 'success'} alert-dismissable" style="${message==null? 'display: none;' : 'display: block;'}"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><span>${message.info}</span></div>
@@ -14,7 +22,7 @@
 			
 			<div class="form-control">
 				<input type="text" id="username" name="username" placeholder="Username"
-					class="input-xlarge">
+					class="usernameField">
 			</div>
 		</div>
 
@@ -23,7 +31,7 @@
 			
 			<div class="form-control">
 				<input type="password" id="password" name="password" placeholder="Password"
-					class="input-xlarge">
+					class="passwordField">
 			</div>
 		</div>
 

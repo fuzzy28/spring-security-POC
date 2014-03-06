@@ -70,7 +70,7 @@ public class AccountRepository implements IAccountRepository{
 	}
 	
 	public Account findByUserName(String username) throws DataAccessResourceFailureException{
-			Map<String, Object> params = new HashMap<String, Object>();
+			Map<String, String> params = new HashMap<String, String>();
 			params.put("username", username);
 			Account account = null;
 

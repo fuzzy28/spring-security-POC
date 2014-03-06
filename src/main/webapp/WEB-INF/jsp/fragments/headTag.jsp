@@ -13,8 +13,8 @@
     <spring:url value="/webjars/bootstrap/2.3.0/css/bootstrap.min.css" var="bootstrapCss"/>
     <link href="${bootstrapCss}" rel="stylesheet"/>
     
-    <spring:url value="/webjars/bootstrap/2.3.0/css/bootstrap-responsive.min.css" var="bootstrap-responsiveCss"/>
-    <link href="${bootstrap-responsiveCss}" rel="stylesheet"/>
+<%--     <spring:url value="/webjars/bootstrap/2.3.0/css/bootstrap-responsive.min.css" var="bootstrap-responsiveCss"/> --%>
+<%--     <link href="${bootstrap-responsiveCss}" rel="stylesheet"/> --%>
 
     <spring:url value="/webjars/jquery/2.0.3/jquery.min.js" var="jQuery"/>
     <script src="${jQuery}"></script>
@@ -35,6 +35,12 @@
     
      <spring:url value="/resources/css/common.css" var="commonCss"/>
     <link href="${commonCss}" rel="stylesheet"/>
+    
+   	<spring:url value="/resources/js/jquery.validate.min.js" var="validateJs"/>
+    <script src="${validateJs}"></script>
+    
+   	<spring:url value="/resources/js/classRules.js" var="classRulesJs"/>
+    <script src="${classRulesJs}"></script>
     
     <spring:url value="/resources/css/bootstrap-theme.min.css" var="btstrpminCss"/>
     <link href="${btstrpminCss}" rel="stylesheet"/>

@@ -1,15 +1,47 @@
+<script>
+$(document).ready(function () {
+	validateForm('#tab');
+});
+</script>
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <form:form id="tab" method="post" modelAttribute="account" action="save" >
-	<label>Username</label> <form:input readonly="true" type="text" path="username" class="input-xlarge" />
+<form:input type="hidden" path="id"/>
+	<div class="control-group">
+	<label class="control-label">Username</label> 
+	<div class="controls">
+		<form:input type="text" id="username" path="username" readonly="true"/>
+	</div>
+	</div>
 	
-<%-- <label>Password</label> <form:input type="password" path="password" value="${account.password}" class="input-xlarge" />  --%>
-	<form:input type="hidden" path="id"/> 
-	<label>First Name</label> <form:input type="text" path="firstName"  class="input-xlarge" /> 
-	<label>Last	Name</label> <form:input type="text" path="lastName"  class="input-xlarge" /> 
-	<label>Email</label> <form:input type="text" path="email" class="input-xlarge" /> 
-	<label>Address</label>
-	<textarea value="" rows="3" class="input-xlarge"></textarea>
+	<div class="control-group">
+	<label class="control-label">First Name</label> 
+	<div class="controls">
+		<form:input type="text" id="firstName" path="firstName" class="nameField"/> 
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label">Last Name</label> 
+	<div class="controls">
+		<form:input type="text" id="lastName" path="lastName" class="nameField"/> 
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label">Email</label> 
+	<div class="controls">
+		<form:input type="text" id="email" path="email" class="emailField" />
+	</div>
+	</div>
+	
+	<div class="control-group">
+	<label class="control-label">Address</label> 
+	<div class="controls">
+		<textarea rows="3" ></textarea>
+	</div>
+	</div>
 	<div>
-		<button class="btn btn-lg btn-primary" type="submit">Edit Account</button>
+		<button class="btn btn-lg btn-primary">Edit Account</button>
 	</div>
 </form:form>

@@ -5,7 +5,6 @@
 <!--Weird that i have to declare this since @ModelAttribute is not working well with tiles 3-->
 <%@ page import="com.acss.poc.account.Account" %>
 <% request.setAttribute("account",new Account()); %>
-
 <html>
 <jsp:include page="../fragments/headTag.jsp"/>
 <body>

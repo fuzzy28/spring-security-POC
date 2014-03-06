@@ -16,6 +16,7 @@
 </div>
 
 <div class="container theme-showcase" >
+	
 	<div class="jumbotron">
 			<tiles:insertAttribute name="body" />
 	</div>

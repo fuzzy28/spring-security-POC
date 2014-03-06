@@ -14,7 +14,12 @@
 		<security:intercept-url pattern="/main/admin" access="hasRole('ROLE_ADMIN')"/>
 		<security:intercept-url pattern="/main/user" access="hasRole('ROLE_USER')" />
 		<security:intercept-url pattern="/main/common" access="isAuthenticated()" />
+		<security:intercept-url pattern="/account/signup" access="permitAll" />
+		<security:intercept-url pattern="/account/**" access="isAuthenticated()" />
+		
+		
 		<security:access-denied-handler error-page="/main/denied"/>
+		
 		<!--Instead of sticking with the defaults, lets define something to hide 
 			spring-security impl. -->
 		<security:form-login login-page="/auth/login"
