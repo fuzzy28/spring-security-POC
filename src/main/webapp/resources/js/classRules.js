@@ -1,7 +1,7 @@
 $.validator.addClassRules({
 	
     usernameField: {
-	 minlength: 2,
+	 minlength: 4,
 	 required: true,
 	 maxlength: 20
     },
@@ -12,7 +12,7 @@ $.validator.addClassRules({
     },
     passwordField: {
         required: true,
-        minlength: 5,
+        minlength: 4,
         maxlength: 20
     },
     emailField: {
