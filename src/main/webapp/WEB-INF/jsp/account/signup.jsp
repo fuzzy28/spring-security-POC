@@ -8,7 +8,7 @@ $(document).ready(function () {
 	<div class="control-group">
 	<label class="control-label">Username</label> 
 	<div class="controls">
-		<form:input type="text" id="username" path="username" class="usernameField" />
+		<form:input type="text" id="username" path="username" class="usernameCheckRemotely" />
 	</div>
 	</div>
 	

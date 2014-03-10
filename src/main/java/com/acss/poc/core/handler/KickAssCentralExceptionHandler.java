@@ -75,9 +75,9 @@ public class KickAssCentralExceptionHandler {
             msg.setIsError(Message.TRUE);
             return null;
         }catch (EmptyResultDataAccessException e) {
-            errorLogger.error("error in {}", repo.getClass().getSimpleName(), e);
-            msg.setInfo(e.getMessage());
-            msg.setIsError(Message.TRUE);
+//            errorLogger.error("error in {}", repo.getClass().getSimpleName(), e);
+//            msg.setInfo(e.getMessage());
+//            msg.setIsError(Message.TRUE);
             return null;
 		}catch (BadSqlGrammarException e) {
             errorLogger.error("error in {}", repo.getClass().getSimpleName(), e);

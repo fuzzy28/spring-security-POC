@@ -43,7 +43,8 @@
 		<jooq.version>3.2.2</jooq.version>
         <jooq.generator.db.dialect>org.jooq.util.h2.H2Database</jooq.generator.db.dialect>
         
-		
+        <!--Maven compiler version  -->
+		<build.plugins.plugin.version>3.0</build.plugins.plugin.version>
 	</properties>
 	
 	<dependencies>
@@ -294,6 +295,11 @@
         	<artifactId>tiles-request-servlet</artifactId>
         	<version>1.0.1</version>
         </dependency>
+        <dependency>
+        	<groupId>javax.servlet</groupId>
+        	<artifactId>servlet-api</artifactId>
+        	<version>2.5</version>
+        </dependency>
 	</dependencies>	
   <build>
     <finalName>springSecurityPOC</finalName>
@@ -301,6 +307,7 @@
 	  <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
 	    <artifactId>maven-compiler-plugin</artifactId>
+	    <version>${build.plugins.plugin.version}</version>
 	    <configuration>
 	      <!-- or whatever version you use -->
 	      <source>1.7</source>

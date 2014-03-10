@@ -17,7 +17,6 @@ import com.acss.poc.core.AwesomeBaseController;
 import com.acss.poc.main.exception.MenuServiceException;
 
 @Controller
-
 @RequestMapping("account")
 public class AccountController extends AwesomeBaseController{
 	
