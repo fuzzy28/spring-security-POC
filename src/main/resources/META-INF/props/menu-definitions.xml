@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!DOCTYPE project>
 <MenuItem>
-    <MenuItem id="Home" text="Home" url="/main/common" access="ROLE_USER">
-        <MenuItem id="Sub-Admin" text="Sub-Tweak Box" url="/main/admin" access="ROLE_ADMIN"/>
+    <MenuItem id="setting" text="Settings" url="/main/common" access="ROLE_USER">
+        <MenuItem id="userSetting" text="User Setting" url="/main/admin" access="ROLE_USER">
+    		<MenuItem id="subSetting" text="Sub-Tweak Box" url="/main/admin" access="ROLE_ADMIN"/>	
+    	</MenuItem>
+    	<MenuItem id="accountSetting" text="Account Setting" url="/main/admin" access="ROLE_ADMIN"/>
     </MenuItem>
-    <MenuItem id="Main Menu" text="Main Menu" url="/main/common" access="ROLE_USER">
-        <MenuItem id="Admin" text="Tweak Box" url="/main/admin" access="ROLE_ADMIN">
-            <MenuItem id="Sub-Admin 1" text="Sub-Tweak Box" url="/main/admin" access="ROLE_ADMIN"/>
-            <MenuItem id="Sub-Admin 2" text="Super Box" url="/main/admin" access="ROLE_ADMIN"/>
-            <MenuItem id="Sub-Admin 3" text="Mega Box" url="/main/admin" access="ROLE_ADMIN"/>
+    <MenuItem id="mainMenu" text="Main Menu" url="/main/common" access="ROLE_USER">
+        <MenuItem id="admin" text="Application" url="/main/admin" access="ROLE_ADMIN">
+            <MenuItem id="subAdmin1" text="Data Entry" url="/main/admin" access="ROLE_ADMIN"/>
+            <MenuItem id="subAdmin2" text="Data Search" url="/main/admin" access="ROLE_ADMIN"/>
+            <MenuItem id="subAdmin3" text="Data Maintenance" url="/main/admin" access="ROLE_ADMIN"/>
         </MenuItem>
-        <MenuItem id="User" text="Lame Function" url="/main/user" access="ROLE_USER"/>
+        
+        <MenuItem id="admin2" text="Settlement" url="/main/admin" access="ROLE_ADMIN">
+            <MenuItem id="subAdmin21" text="Document Processing" url="/main/admin" access="ROLE_ADMIN"/>
+            <MenuItem id="subAdmin22" text="Settlement Processing" url="/main/admin" access="ROLE_ADMIN"/>
+            <MenuItem id="subAdmin23" text="Settlement Tracker" url="/main/admin" access="ROLE_ADMIN"/>
+        </MenuItem>
+        
+        <MenuItem id="admin3" text="Credit Management" url="/main/admin" access="ROLE_ADMIN">
+            <MenuItem id="subAdmin31" text="Account Allocation" url="/main/admin" access="ROLE_ADMIN"/>
+            <MenuItem id="subAdmin32" text="Desk Contact" url="/main/admin" access="ROLE_ADMIN"/>
+            <MenuItem id="subAdmin33" text="Field Contact" url="/main/admin" access="ROLE_ADMIN"/>
+        </MenuItem>
+        
+        <MenuItem id="user" text="Lame Function" url="/main/user" access="ROLE_USER"/>
     </MenuItem>
+    <MenuItem id="noSub" text="DirectLink" url="/main/admin" access="ROLE_ADMIN"></MenuItem>
 </MenuItem>
