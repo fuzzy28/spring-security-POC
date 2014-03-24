@@ -22,7 +22,8 @@
 				    
 				    
 					<div id= "${menu.id}" class="accordion-body collapse" style="height: 0px; ">
-	                  <div class="accordion-inner">
+						
+	                  <div class="accordion-inner" id="parentMenu_${menu.id}">
 	                      
 	                      	  <c:forEach items="${menu.menuItems}" var="submenu" varStatus="subCount">
 	                          
@@ -32,15 +33,14 @@
 				    					<c:choose>
 				    					<c:when test="${submenu.hasChildren}">
 										<div class="accordion-heading">
-											<a class="accordion-toggle" data-toggle="collapse" data-parent="#${menu.id}" href="#${submenu.id}"> 
+											<a class="accordion-toggle" data-toggle="collapse" data-parent="#parentMenu_${menu.id}" href="#${submenu.id}"> 
 											<i class="icon-file"></i> ${submenu.name}
 											</a>
 										</div>
 										
-										<div class="accordion-inner">
-										<div id="${submenu.id}" class="accordion-body collapse"
-											style="height: 0px;">
-
+										
+										<div id="${submenu.id}" class="accordion-body collapse" style="height: 0px;">
+											<div class="accordion-inner">
 												<c:forEach items="${submenu.menuItems}" var="submenu_child" varStatus="sub_childCount">
 													<c:url value="${submenu_child.url}" var="subMenuChildUrl"/>
 													<sec:authorize ifAnyGranted="${submenu_child.access}">
@@ -54,9 +54,7 @@
 														
 													</sec:authorize>
 												</c:forEach>
-												
 											</div>
-											
 										</div>
 										
 										</c:when>

@@ -42,6 +42,7 @@ margin-right: -15px;
     border-radius: 0px;
 }
 
+.accordion-inner { border-top: 0 none; }
 
 
 /* Sticky footer styles
